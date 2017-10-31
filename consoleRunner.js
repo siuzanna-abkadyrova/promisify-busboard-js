@@ -13,7 +13,10 @@ const TFL_BASE_URL = 'https://api.tfl.gov.uk';
 export default class ConsoleRunner {
 
     promptForPostcode(callback) {
-        readline.question('\nEnter your postcode: ', callback);
+        readline.question('\nEnter your postcode: ', function(postcode) {
+            readline.close();
+            callback(postcode);
+        });
     }
 
     displayStopPoints(stopPoints) {
